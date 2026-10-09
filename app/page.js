@@ -108,7 +108,7 @@ const projects = [
     title: "Relay",
     type: "Operations Engine",
     desc: "Created a bold B2B narrative with clear use-case framing, helping teams quickly understand platform value.",
-    images: ["/portfolio/relay_main.png", "/portfolio/relay_1.png", "protfolio/relay_2.png"],
+    images: ["/portfolio/relay_main.png", "/portfolio/relay_1.png", "/portfolio/relay_2.png"],
   },
   {
     title: "Clayhouse",
@@ -531,7 +531,7 @@ export default function LaunchlaneLight() {
                           }`}
                         >
                           <Image 
-                            src={imgSrc} 
+                            src={imgSrc || "/portfolio/placeholder.jpg"} 
                             alt={`Thumbnail ${idx + 1}`} 
                             fill 
                             className="object-cover object-top" 
