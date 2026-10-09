@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f6f6f4;
+  color: #11111a;
+  font-family: "Inter", "Avenir Next", "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+:focus-visible {
+  outline: 3px solid #4da3ff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
