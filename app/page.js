@@ -103,29 +103,18 @@ const processSteps = [
 ];
 
 const projects = [
+
   {
-    title: "Orbitly",
-    type: "Collaboration Platform",
-    desc: "Reframed a dense product into a clear homepage that improved feature discoverability and demo signups.",
-    images: ["/portfolio/orbitly.jpg", "/portfolio/orbitly-2.jpg", "/portfolio/orbitly-3.jpg"],
-  },
-  {
-    title: "Morrow",
-    type: "Financial Planning",
-    desc: "Built a trust-first experience with strong storytelling and conversion-focused guidance for new users.",
-    images: ["/portfolio/morrow.jpg", "/portfolio/morrow-2.jpg"],
+    title: "Relay",
+    type: "Operations Engine",
+    desc: "Created a bold B2B narrative with clear use-case framing, helping teams quickly understand platform value.",
+    images: ["/portfolio/relay_main.png", "/portfolio/relay_1.png", "protfolio/relay_2.png"],
   },
   {
     title: "Clayhouse",
     type: "Design Marketplace",
     desc: "Designed a flexible catalog layout that made products feel premium while simplifying the path to purchase.",
-    images: ["/portfolio/clayhouse.jpg", "/portfolio/clayhouse-2.jpg"],
-  },
-  {
-    title: "Relay",
-    type: "Operations Engine",
-    desc: "Created a bold B2B narrative with clear use-case framing, helping teams quickly understand platform value.",
-    images: ["/portfolio/relay.jpg", "/portfolio/relay-2.jpg"],
+    images: ["/portfolio/clayhouse_main.png", "/portfolio/clayhouse_1.png"],
   },
 ];
 
