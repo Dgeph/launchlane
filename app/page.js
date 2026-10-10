@@ -152,7 +152,7 @@ const faqItems = [
   }
 ];
 
-export default function LaunchlaneDark() {
+export default function LaunchlaneLight() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [submissionComplete, setSubmissionComplete] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -197,10 +197,12 @@ export default function LaunchlaneDark() {
     setActiveImageIndex(0);
   };
 
+  // Web3Forms Submit Handler + Blank Validation
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormError("");
 
+    // Validate blank / whitespace inputs
     if (
       !formData.name.trim() ||
       !formData.company.trim() ||
@@ -223,7 +225,7 @@ export default function LaunchlaneDark() {
         body: JSON.stringify({
           access_key: "96b975d1-847d-4e57-8837-fa823f702b91",
           subject: `New Lead from ${formData.name} (${formData.company})`,
-          from_name: "Launchlane Dark Mode Website",
+          from_name: "Launchlane Website",
           name: formData.name,
           company: formData.company,
           email: formData.email,
@@ -251,20 +253,15 @@ export default function LaunchlaneDark() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0A0A0A] text-stone-100 font-sans selection:bg-[#FF5500] selection:text-white overflow-x-hidden">
-      <div 
-        className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03] mix-blend-overlay" 
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
-      />
-
+    <div className="relative min-h-screen bg-white text-stone-900 font-sans selection:bg-[#FF5500] selection:text-white overflow-x-hidden">
       <div className="fixed top-6 left-0 right-0 z-40 px-4 md:px-8 max-w-6xl mx-auto pointer-events-none">
         <motion.header
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="pointer-events-auto w-full rounded-2xl md:rounded-full border border-stone-800/80 bg-[#0A0A0A]/60 backdrop-blur-2xl shadow-2xl px-6 py-3.5 flex items-center justify-between"
+          className="pointer-events-auto w-full rounded-2xl md:rounded-full border border-stone-200 bg-white/80 backdrop-blur-2xl shadow-xl px-6 py-3.5 flex items-center justify-between"
         >
-          <Link href="/" className="flex items-center gap-3 text-lg font-black tracking-tight text-white group">
+          <Link href="/" className="flex items-center gap-3 text-lg font-black tracking-tight text-black group">
             <LaunchlaneSymbol className="w-5 h-5 transition-transform duration-500 group-hover:rotate-180" />
             <span className="tracking-wider">LAUNCH<span className="text-[#FF5500]">LANE</span></span>
           </Link>
@@ -274,7 +271,7 @@ export default function LaunchlaneDark() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-xs font-semibold text-stone-400 transition-colors hover:text-white relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-[#FF5500] after:transition-all after:duration-300 pb-1"
+                className="text-xs font-semibold text-stone-600 transition-colors hover:text-black relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-[#FF5500] after:transition-all after:duration-300 pb-1"
               >
                 {link.label}
               </Link>
@@ -286,14 +283,14 @@ export default function LaunchlaneDark() {
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               onClick={openModal}
-              className="rounded-full bg-[#FF5500] px-5 py-2 text-xs font-bold text-white shadow-[0_0_20px_rgba(255,85,0,0.3)] transition-colors hover:bg-[#FF6611]"
+              className="rounded-full bg-[#FF5500] px-5 py-2 text-xs font-bold text-white shadow-[0_4px_20px_rgba(255,85,0,0.25)] transition-colors hover:bg-[#FF6611]"
             >
               Start your launch
             </motion.button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-stone-400 hover:text-white rounded-lg focus:outline-none"
+              className="lg:hidden p-2 text-stone-600 hover:text-black rounded-lg focus:outline-none"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -306,14 +303,14 @@ export default function LaunchlaneDark() {
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
               animate={{ opacity: 1, y: 8, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
-              className="pointer-events-auto lg:hidden rounded-2xl border border-stone-800 bg-[#121212]/95 backdrop-blur-2xl p-6 shadow-2xl space-y-4"
+              className="pointer-events-auto lg:hidden rounded-2xl border border-stone-200 bg-white/95 backdrop-blur-2xl p-6 shadow-2xl space-y-4"
             >
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block text-sm font-semibold text-stone-300 hover:text-[#FF5500] transition-colors"
+                  className="block text-sm font-semibold text-stone-700 hover:text-[#FF5500] transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -325,7 +322,7 @@ export default function LaunchlaneDark() {
 
       <main className="relative z-10 pt-36">
         <section className="relative mx-auto max-w-5xl px-6 py-20 text-center flex flex-col justify-center items-center">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[400px] w-[400px] rounded-full bg-[#FF5500]/10 blur-[130px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[400px] w-[400px] rounded-full bg-[#FF5500]/10 blur-[120px] pointer-events-none" />
 
           <motion.div 
             initial={{ opacity: 0, y: 15 }}
@@ -340,10 +337,10 @@ export default function LaunchlaneDark() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl font-black tracking-tight text-white sm:text-6xl md:text-7xl leading-[1.08]"
+            className="text-4xl font-black tracking-tight text-black sm:text-6xl md:text-7xl leading-[1.08]"
           >
             Launch faster with a website <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] to-[#FF8800]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5500] to-[#FF7700]">
               built to convert.
             </span>
           </motion.h1>
@@ -352,7 +349,7 @@ export default function LaunchlaneDark() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-stone-400 font-normal leading-relaxed"
+            className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-stone-600 font-normal leading-relaxed"
           >
             We design and build high-impact startup websites that help founders earn trust quickly and turn traffic into real conversations.
           </motion.p>
@@ -367,7 +364,7 @@ export default function LaunchlaneDark() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={openModal}
-              className="group inline-flex items-center gap-3 rounded-full bg-[#FF5500] px-8 py-4 text-sm font-extrabold text-white shadow-[0_0_35px_rgba(255,85,0,0.35)] transition-all hover:bg-[#FF6611]"
+              className="group inline-flex items-center gap-3 rounded-full bg-[#FF5500] px-8 py-4 text-sm font-extrabold text-white shadow-[0_4px_30px_rgba(255,85,0,0.3)] transition-all hover:bg-[#FF6611]"
             >
               Start your launch
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -375,16 +372,16 @@ export default function LaunchlaneDark() {
           </motion.div>
         </section>
 
-        <div className="relative flex overflow-x-hidden border-y border-stone-800 bg-[#0E0E0E] py-5 my-8">
+        <div className="relative flex overflow-x-hidden border-y border-stone-200 bg-stone-50 py-5 my-8">
           <motion.div 
             animate={{ x: ["0%", "-100%"] }} 
             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="flex whitespace-nowrap text-sm font-bold uppercase tracking-widest text-stone-400 w-max"
+            className="flex whitespace-nowrap text-sm font-bold uppercase tracking-widest text-stone-600 w-max"
           >
             {[...Array(2)].map((_, i) => (
               <span key={i} className="flex items-center gap-8 pr-8">
-                HIGH CONVERTING WEBSITES <Zap className="text-[#FF5500] w-4 h-4 fill-[#FF5500]" /> ZERO FRICTION <Sparkles className="text-stone-300 w-4 h-4" /> 4-WEEK SPRINT <Rocket className="text-[#FF5500] w-4 h-4" />
-                HIGH CONVERTING WEBSITES <Zap className="text-[#FF5500] w-4 h-4 fill-[#FF5500]" /> ZERO FRICTION <Sparkles className="text-stone-300 w-4 h-4" /> 4-WEEK SPRINT <Rocket className="text-[#FF5500] w-4 h-4" />
+                HIGH CONVERTING WEBSITES <Zap className="text-[#FF5500] w-4 h-4 fill-[#FF5500]" /> ZERO FRICTION <Sparkles className="text-stone-800 w-4 h-4" /> 4-WEEK SPRINT <Rocket className="text-[#FF5500] w-4 h-4" />
+                HIGH CONVERTING WEBSITES <Zap className="text-[#FF5500] w-4 h-4 fill-[#FF5500]" /> ZERO FRICTION <Sparkles className="text-stone-800 w-4 h-4" /> 4-WEEK SPRINT <Rocket className="text-[#FF5500] w-4 h-4" />
               </span>
             ))}
           </motion.div>
@@ -392,8 +389,8 @@ export default function LaunchlaneDark() {
 
         <section id="features" className="mx-auto max-w-6xl px-6 py-24">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">Why Choose Launchlane</h2>
-            <p className="mt-3 text-stone-400 text-sm">Engineering competitive advantages for ambitious founders.</p>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-black">Why Choose Launchlane</h2>
+            <p className="mt-3 text-stone-600 text-sm">Engineering competitive advantages for ambitious founders.</p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
@@ -406,20 +403,20 @@ export default function LaunchlaneDark() {
                 key={i}
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.2 }}
-                className="rounded-2xl border border-stone-800/80 bg-[#121212]/80 p-8 shadow-xl hover:border-[#FF5500]/40 transition-colors"
+                className="rounded-2xl border border-stone-200 bg-stone-50/50 p-8 shadow-sm hover:border-[#FF5500]/40 transition-colors"
               >
-                <div className="mb-5 inline-flex rounded-xl bg-[#1A1A1A] p-3.5 border border-stone-800">
+                <div className="mb-5 inline-flex rounded-xl bg-white p-3.5 border border-stone-200 shadow-sm">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white">{feature.title}</h3>
-                <p className="mt-3 text-stone-400 text-sm leading-relaxed">{feature.desc}</p>
+                <h3 className="text-xl font-bold text-black">{feature.title}</h3>
+                <p className="mt-3 text-stone-600 text-sm leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
-        <section id="services" className="mx-auto max-w-6xl px-6 py-24 border-t border-stone-800/80">
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white mb-14 text-center">Our Capabilities</h2>
+        <section id="services" className="mx-auto max-w-6xl px-6 py-24 border-t border-stone-200">
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-black mb-14 text-center">Our Capabilities</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {[
               { title: "Launch Websites", desc: "Conversion-ready websites crafted to help early-stage startups look credible and win trust from day one." },
@@ -430,19 +427,19 @@ export default function LaunchlaneDark() {
               <motion.div
                 key={i}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl border border-stone-800/80 bg-[#121212]/80 p-8 shadow-lg hover:border-stone-700 transition-colors"
+                className="rounded-2xl border border-stone-200 bg-stone-50/50 p-8 shadow-sm hover:border-stone-400 transition-colors"
               >
-                <h3 className="text-xl font-extrabold text-white">{service.title}</h3>
-                <p className="mt-3 text-stone-400 text-sm leading-relaxed">{service.desc}</p>
+                <h3 className="text-xl font-extrabold text-black">{service.title}</h3>
+                <p className="mt-3 text-stone-600 text-sm leading-relaxed">{service.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
-        <section id="process" className="mx-auto max-w-4xl px-6 py-24 border-t border-stone-800/80">
+        <section id="process" className="mx-auto max-w-4xl px-6 py-24 border-t border-stone-200">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">From Idea to Online</h2>
-            <p className="mt-3 text-stone-400 text-sm md:text-base">A four-step framework designed to remove uncertainty and move your startup forward.</p>
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-black">From Idea to Online</h2>
+            <p className="mt-3 text-stone-600 text-sm md:text-base">A four-step framework designed to remove uncertainty and move your startup forward.</p>
           </div>
 
           <div className="space-y-12">
@@ -453,19 +450,19 @@ export default function LaunchlaneDark() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6 }}
-                className="relative rounded-3xl border border-stone-800 bg-[#121212] p-8 md:p-10 shadow-2xl overflow-hidden"
+                className="relative rounded-3xl border border-stone-200 bg-stone-50 p-8 md:p-10 shadow-sm overflow-hidden"
               >
                 <div className="flex items-center gap-5 mb-5">
                   <span className="text-4xl font-black text-[#FF5500]">{step.step}</span>
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-white">{step.title}</h3>
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-black">{step.title}</h3>
                 </div>
 
-                <p className="text-lg font-bold text-stone-200 mb-2">{step.intro}</p>
-                <p className="text-stone-400 text-sm leading-relaxed mb-6">{step.copy}</p>
+                <p className="text-lg font-bold text-stone-800 mb-2">{step.intro}</p>
+                <p className="text-stone-600 text-sm leading-relaxed mb-6">{step.copy}</p>
 
                 <ul className="space-y-3 mb-8">
                   {step.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-start gap-3 text-stone-300 text-sm font-medium">
+                    <li key={i} className="flex items-start gap-3 text-stone-700 text-sm font-medium">
                       <div className="mt-0.5 rounded-full bg-[#FF5500]/10 p-1 text-[#FF5500]">
                         <Check className="w-3.5 h-3.5" />
                       </div>
@@ -474,33 +471,33 @@ export default function LaunchlaneDark() {
                   ))}
                 </ul>
 
-                <div className="rounded-2xl border border-stone-800 bg-[#1A1A1A] p-5">
+                <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs">
                   <p className="text-xs font-bold uppercase tracking-widest text-[#FF5500] mb-1">You leave this step with:</p>
-                  <p className="text-stone-200 font-medium text-sm leading-relaxed">{step.deliverable}</p>
+                  <p className="text-stone-800 font-medium text-sm leading-relaxed">{step.deliverable}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </section>
 
-        <section id="portfolio" className="mx-auto max-w-5xl px-6 py-24 border-t border-stone-800/80">
+        <section id="portfolio" className="mx-auto max-w-5xl px-6 py-24 border-t border-stone-200">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
             <div>
-              <h2 className="text-3xl font-black tracking-tight text-white">Selected Work</h2>
-              <p className="mt-1 text-stone-400 text-sm">Small teams. Big first impressions.</p>
+              <h2 className="text-3xl font-black tracking-tight text-black">Selected Work</h2>
+              <p className="mt-1 text-stone-600 text-sm">Small teams. Big first impressions.</p>
             </div>
             
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={handleNextProject}
-              className="inline-flex items-center gap-2 rounded-full border border-stone-800 bg-[#121212] px-6 py-2.5 text-xs font-bold text-white transition hover:border-[#FF5500] hover:text-[#FF5500]"
+              className="inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-6 py-2.5 text-xs font-bold text-black shadow-xs transition hover:border-[#FF5500] hover:text-[#FF5500]"
             >
               Next Project <ChevronRight className="w-4 h-4" />
             </motion.button>
           </div>
 
-          <div className="relative w-full rounded-2xl border border-stone-800 bg-[#121212] p-6 md:p-8 shadow-xl">
+          <div className="relative w-full rounded-2xl border border-stone-200 bg-stone-50 p-6 md:p-8 shadow-sm">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeProjectIndex}
@@ -511,7 +508,7 @@ export default function LaunchlaneDark() {
                 className="grid md:grid-cols-2 gap-8 items-center"
               >
                 <div className="space-y-4">
-                  <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-stone-800 bg-stone-900 shadow-md">
+                  <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-stone-200 bg-stone-200 shadow-xs">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={activeImageIndex}
@@ -541,7 +538,7 @@ export default function LaunchlaneDark() {
                           className={`relative aspect-video w-16 overflow-hidden rounded-lg border transition-all ${
                             activeImageIndex === idx 
                               ? "border-[#FF5500] ring-2 ring-[#FF5500]/30 scale-105" 
-                              : "border-stone-800 opacity-60 hover:opacity-100"
+                              : "border-stone-300 opacity-60 hover:opacity-100"
                           }`}
                         >
                           <Image 
@@ -561,10 +558,10 @@ export default function LaunchlaneDark() {
                   <span className="inline-block rounded-full border border-[#FF5500]/30 bg-[#FF5500]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#FF5500] mb-4">
                     {projects[activeProjectIndex].type}
                   </span>
-                  <h3 className="text-2xl font-extrabold text-white mb-3">
+                  <h3 className="text-2xl font-extrabold text-black mb-3">
                     {projects[activeProjectIndex].title}
                   </h3>
-                  <p className="text-stone-400 text-sm leading-relaxed mb-6">
+                  <p className="text-stone-600 text-sm leading-relaxed mb-6">
                     {projects[activeProjectIndex].desc}
                   </p>
 
@@ -577,10 +574,10 @@ export default function LaunchlaneDark() {
           </div>
         </section>
 
-        <section id="faq" className="mx-auto max-w-4xl px-6 py-24 border-t border-stone-800/80">
+        <section id="faq" className="mx-auto max-w-4xl px-6 py-24 border-t border-stone-200">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">Frequently Asked Questions</h2>
-            <p className="mt-3 text-stone-400 text-sm">Everything you need to know about working with Launchlane.</p>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-black">Frequently Asked Questions</h2>
+            <p className="mt-3 text-stone-600 text-sm">Everything you need to know about working with Launchlane.</p>
           </div>
 
           <div className="space-y-4">
@@ -589,17 +586,17 @@ export default function LaunchlaneDark() {
               return (
                 <div 
                   key={index} 
-                  className="rounded-2xl border border-stone-800 bg-[#121212] overflow-hidden transition-colors hover:border-stone-700"
+                  className="rounded-2xl border border-stone-200 bg-stone-50 overflow-hidden transition-colors hover:border-stone-300"
                 >
                   <button
                     onClick={() => toggleFaq(index)}
                     className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
                   >
-                    <span className="text-base font-bold text-white pr-4">{item.question}</span>
+                    <span className="text-base font-bold text-black pr-4">{item.question}</span>
                     <motion.div
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
-                      className="text-stone-400 shrink-0"
+                      className="text-stone-500 shrink-0"
                     >
                       <ChevronDown className="w-5 h-5" />
                     </motion.div>
@@ -614,7 +611,7 @@ export default function LaunchlaneDark() {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="p-6 pt-0 border-t border-stone-800/50 text-stone-400 text-sm leading-relaxed">
+                        <div className="p-6 pt-0 border-t border-stone-200 text-stone-600 text-sm leading-relaxed">
                           {item.answer}
                         </div>
                       </motion.div>
@@ -627,10 +624,10 @@ export default function LaunchlaneDark() {
         </section>
 
         <section className="mx-auto max-w-5xl px-6 py-20">
-          <div className="relative rounded-[2.5rem] border border-stone-800 bg-[#121212] p-10 md:p-20 text-center shadow-2xl overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[200px] bg-[#FF5500]/15 blur-[100px] rounded-full pointer-events-none" />
+          <div className="relative rounded-[2.5rem] border border-stone-200 bg-stone-50 p-10 md:p-20 text-center shadow-sm overflow-hidden">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[200px] bg-[#FF5500]/10 blur-[100px] rounded-full pointer-events-none" />
 
-            <h2 className="relative z-10 mx-auto max-w-2xl text-3xl sm:text-5xl font-black tracking-tight text-white mb-10">
+            <h2 className="relative z-10 mx-auto max-w-2xl text-3xl sm:text-5xl font-black tracking-tight text-black mb-10">
               Your next chapter deserves a better homepage.
             </h2>
 
@@ -638,9 +635,9 @@ export default function LaunchlaneDark() {
               animate={{ 
                 scale: [1, 1.08, 1],
                 boxShadow: [
-                  "0 0 25px rgba(255,85,0,0.3)",
-                  "0 0 50px rgba(255,85,0,0.6)",
-                  "0 0 25px rgba(255,85,0,0.3)"
+                  "0 4px 20px rgba(255,85,0,0.25)",
+                  "0 8px 40px rgba(255,85,0,0.5)",
+                  "0 4px 20px rgba(255,85,0,0.25)"
                 ]
               }}
               transition={{
@@ -658,17 +655,17 @@ export default function LaunchlaneDark() {
         </section>
       </main>
 
-      <footer className="border-t border-stone-800/80 bg-[#0A0A0A] py-12 px-6">
+      <footer className="border-t border-stone-200 bg-white py-12 px-6">
         <div className="mx-auto max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-6 text-center sm:text-left">
-          <Link href="/" className="flex items-center gap-2.5 text-lg font-black text-white">
+          <Link href="/" className="flex items-center gap-2.5 text-lg font-black text-black">
             <LaunchlaneSymbol className="w-5 h-5" />
             <span>LAUNCH<span className="text-[#FF5500]">LANE</span></span>
           </Link>
 
-          <address className="flex flex-col sm:flex-row gap-4 sm:gap-8 not-italic text-xs font-semibold text-stone-400">
-            <a href="tel:+233558684733" className="hover:text-white transition-colors">+233 558684733</a>
-            <a href="tel:+233205495018" className="hover:text-white transition-colors">+233 205495018</a>
-            <a href="mailto:launchlane@gmail.com" className="hover:text-white transition-colors">launchlane@gmail.com</a>
+          <address className="flex flex-col sm:flex-row gap-4 sm:gap-8 not-italic text-xs font-semibold text-stone-600">
+            <a href="tel:+233558684733" className="hover:text-black transition-colors">+233 558684733</a>
+            <a href="tel:+233205495018" className="hover:text-black transition-colors">+233 205495018</a>
+            <a href="mailto:launchlane@gmail.com" className="hover:text-black transition-colors">launchlane@gmail.com</a>
           </address>
         </div>
       </footer>
@@ -682,18 +679,18 @@ export default function LaunchlaneDark() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeModal}
-              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+              className="absolute inset-0 bg-black/40 backdrop-blur-md"
             />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl border border-stone-800 bg-[#121212] p-8 md:p-10 shadow-2xl z-10"
+              className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl border border-stone-200 bg-white p-8 md:p-10 shadow-2xl z-10"
             >
               <button
                 onClick={closeModal}
-                className="absolute right-6 top-6 text-stone-400 hover:text-white transition-colors"
+                className="absolute right-6 top-6 text-stone-500 hover:text-black transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -702,21 +699,21 @@ export default function LaunchlaneDark() {
 
               {submissionComplete ? (
                 <div className="py-10 text-center">
-                  <h3 className="text-2xl font-bold text-white">Inquiry Received</h3>
-                  <p className="mt-2 text-stone-400 text-sm">We’ll review your details and be in touch shortly.</p>
+                  <h3 className="text-2xl font-bold text-black">Inquiry Received</h3>
+                  <p className="mt-2 text-stone-600 text-sm">We’ll review your details and be in touch shortly.</p>
                   <button
                     onClick={closeModal}
-                    className="mt-6 rounded-full border border-stone-800 bg-[#1A1A1A] px-6 py-2.5 text-xs font-bold text-white hover:bg-stone-800"
+                    className="mt-6 rounded-full border border-stone-200 bg-stone-100 px-6 py-2.5 text-xs font-bold text-black hover:bg-stone-200"
                   >
                     Close
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-                  <h3 className="text-2xl font-extrabold tracking-tight text-white">Let's build together.</h3>
+                  <h3 className="text-2xl font-extrabold tracking-tight text-black">Let's build together.</h3>
 
                   {formError && (
-                    <div className="rounded-xl bg-red-950/60 p-3 text-xs font-semibold text-red-400 border border-red-800/60">
+                    <div className="rounded-xl bg-red-50 p-3 text-xs font-semibold text-red-600 border border-red-200">
                       {formError}
                     </div>
                   )}
@@ -728,7 +725,7 @@ export default function LaunchlaneDark() {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="Your name *"
-                      className="w-full border-0 border-b border-stone-800 bg-transparent py-2.5 px-0 text-sm text-white placeholder-stone-500 outline-none transition-colors focus:border-[#FF5500]"
+                      className="w-full border-0 border-b border-stone-200 bg-transparent py-2.5 px-0 text-sm text-black placeholder-stone-400 outline-none transition-colors focus:border-[#FF5500]"
                     />
                     <input
                       required
@@ -736,7 +733,7 @@ export default function LaunchlaneDark() {
                       value={formData.company}
                       onChange={handleInputChange}
                       placeholder="Company name *"
-                      className="w-full border-0 border-b border-stone-800 bg-transparent py-2.5 px-0 text-sm text-white placeholder-stone-500 outline-none transition-colors focus:border-[#FF5500]"
+                      className="w-full border-0 border-b border-stone-200 bg-transparent py-2.5 px-0 text-sm text-black placeholder-stone-400 outline-none transition-colors focus:border-[#FF5500]"
                     />
                     <input
                       type="email"
@@ -745,10 +742,10 @@ export default function LaunchlaneDark() {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Email address *"
-                      className="w-full border-0 border-b border-stone-800 bg-transparent py-2.5 px-0 text-sm text-white placeholder-stone-500 outline-none transition-colors focus:border-[#FF5500]"
+                      className="w-full border-0 border-b border-stone-200 bg-transparent py-2.5 px-0 text-sm text-black placeholder-stone-400 outline-none transition-colors focus:border-[#FF5500]"
                     />
 
-                    <div className="relative flex items-center border-b border-stone-800 focus-within:border-[#FF5500] transition-colors">
+                    <div className="relative flex items-center border-b border-stone-200 focus-within:border-[#FF5500] transition-colors">
                       <div className="relative">
                         <button
                           type="button"
@@ -759,7 +756,7 @@ export default function LaunchlaneDark() {
                         </button>
 
                         {isCountryMenuOpen && (
-                          <div className="absolute left-0 top-full mt-2 w-44 rounded-xl border border-stone-800 bg-[#1A1A1A] p-2 shadow-2xl z-20">
+                          <div className="absolute left-0 top-full mt-2 w-44 rounded-xl border border-stone-200 bg-white p-2 shadow-xl z-20">
                             {countries.map((c) => (
                               <button
                                 key={`${c.code}-${c.label}`}
@@ -768,9 +765,9 @@ export default function LaunchlaneDark() {
                                   setSelectedCountry(c);
                                   setIsCountryMenuOpen(false);
                                 }}
-                                className="w-full text-left px-3 py-1.5 text-xs text-stone-300 hover:bg-stone-800 rounded-lg transition-colors"
+                                className="w-full text-left px-3 py-1.5 text-xs text-stone-700 hover:bg-stone-100 rounded-lg transition-colors"
                               >
-                                <span className="font-bold text-[#FF5500]">{c.label}</span> <span className="text-[10px] text-stone-500">{c.code}</span>
+                                <span className="font-bold text-[#FF5500]">{c.label}</span> <span className="text-[10px] text-stone-400">{c.code}</span>
                               </button>
                             ))}
                           </div>
@@ -784,7 +781,7 @@ export default function LaunchlaneDark() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="Phone number *"
-                        className="flex-1 border-0 bg-transparent py-2.5 px-0 text-sm text-white placeholder-stone-500 outline-none"
+                        className="flex-1 border-0 bg-transparent py-2.5 px-0 text-sm text-black placeholder-stone-400 outline-none"
                       />
                     </div>
 
@@ -794,14 +791,14 @@ export default function LaunchlaneDark() {
                       value={formData.details}
                       onChange={handleInputChange}
                       placeholder="Project details or goals..."
-                      className="w-full border-0 border-b border-stone-800 bg-transparent py-2.5 px-0 text-sm text-white placeholder-stone-500 outline-none transition-colors focus:border-[#FF5500] resize-none"
+                      className="w-full border-0 border-b border-stone-200 bg-transparent py-2.5 px-0 text-sm text-black placeholder-stone-400 outline-none transition-colors focus:border-[#FF5500] resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-full bg-[#FF5500] py-3.5 text-sm font-bold text-white shadow-[0_0_25px_rgba(255,85,0,0.3)] transition-all hover:bg-[#FF6611] disabled:opacity-50"
+                    className="w-full rounded-full bg-[#FF5500] py-3.5 text-sm font-bold text-white shadow-[0_4px_25px_rgba(255,85,0,0.3)] transition-all hover:bg-[#FF6611] disabled:opacity-50"
                   >
                     {isSubmitting ? "Sending..." : "Send Project Inquiry"}
                   </button>
